@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var move_state_machine : AnimationNodeStateMachinePlayback = $AnimationTree.get('parameters/MoveStateMachine/playback')
+
 var direction : Vector2
 var speed := 300
 
@@ -15,5 +17,10 @@ func get_input():
 
 func animation():
 	if direction:
+		move_state_machine.travel('move')
 		var target_vector : Vector2 = Vector2(round(direction.x),round(direction.y))
+		$AnimationTree.set("parameters/MoveStateMachine/move/blend_position", target_vector)
 		$AnimationTree.set("parameters/MoveStateMachine/idle/blend_position", target_vector)
+		
+	else:
+		move_state_machine.travel('idle')
