@@ -1,11 +1,13 @@
 [gd_scene format=4 uid="uid://bf0yuue48pk6v"]
 
 [ext_resource type="PackedScene" uid="uid://ca106qafnt25o" path="res://scenes/player/player.tscn" id="1_e6yxx"]
+[ext_resource type="Script" uid="uid://clrco8q3kabtt" path="res://scenes/level/game.gd" id="1_f2w0s"]
 [ext_resource type="Texture2D" uid="uid://baw527j36pxgi" path="res://graphics/tilesets/grass.png" id="1_qhoho"]
 [ext_resource type="Texture2D" uid="uid://b134tjp5ngghx" path="res://graphics/tilesets/water.png" id="1_qrcxb"]
 [ext_resource type="Texture2D" uid="uid://c15lysgtp52wu" path="res://graphics/tilesets/soil.png" id="2_qrcxb"]
 [ext_resource type="Texture2D" uid="uid://dcwcdle3cjkv6" path="res://graphics/tilesets/hills.png" id="4_fq6ga"]
 [ext_resource type="PackedScene" uid="uid://brvvlvtr46gq1" path="res://tree.tscn" id="5_fq6ga"]
+[ext_resource type="Texture2D" uid="uid://byfag0kgqavgo" path="res://graphics/tilesets/soil_water.png" id="6_3ny2s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ny2s"]
 texture = ExtResource("1_qrcxb")
@@ -412,6 +414,8 @@ texture = ExtResource("1_qhoho")
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Main"
 terrain_set_0/terrain_0/color = Color(0.6958221, 0.13650206, 0.17071846, 1)
+custom_data_layer_0/name = "usable"
+custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_fq6ga")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f2w0s"]
@@ -797,7 +801,17 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_ig4jx")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pn0ym"]
+texture = ExtResource("6_3ny2s")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_d0u6y"]
+sources/0 = SubResource("TileSetAtlasSource_pn0ym")
+
 [node name="Game" type="Node2D" unique_id=215818908]
+script = ExtResource("1_f2w0s")
 
 [node name="Layers" type="Node2D" parent="." unique_id=1530115408]
 
@@ -815,6 +829,10 @@ tile_set = SubResource("TileSet_g4v7s")
 [node name="HillsLayer" type="TileMapLayer" parent="Layers" unique_id=549002419]
 tile_map_data = PackedByteArray("AAAaAAEAAAAAAAEAAAAaAAIAAAAAAAIAAAAbAAIAAAABAAIAAAAcAAIAAAABAAIAAAAdAAIAAAABAAIAAAAeAAIAAAABAAIAAAAfAAIAAAACAAIAAAAfAAEAAAACAAEAAAAfAAAAAAACAAAAAAAaAAAAAAAAAAAAAAAbAAAAAAABAAAAAAAcAAAAAAABAAAAAAAdAAAAAAABAAAAAAAeAAAAAAABAAAAAAAdAAEAAAABAAEAAAAcAAEAAAABAAEAAAAbAAEAAAABAAEAAAAeAAEAAAABAAEAAAAEAAkAAAAAAAAAAAAEAAoAAAAAAAEAAAAEAAsAAAAAAAIAAAAFAAkAAAABAAAAAAAFAAoAAAABAAEAAAAFAAsAAAABAAIAAAAGAAkAAAACAAAAAAAGAAoAAAACAAEAAAAGAAsAAAACAAIAAAAEAA0AAAAAAAAAAAAEAA4AAAAAAAEAAAAEAA8AAAAAAAIAAAAFAA0AAAABAAAAAAAFAA4AAAABAAEAAAAFAA8AAAABAAIAAAAGAA0AAAACAAAAAAAGAA4AAAACAAEAAAAGAA8AAAACAAIAAAAEABEAAAAAAAAAAAAEABIAAAAAAAEAAAAEABMAAAAAAAIAAAAFABEAAAABAAAAAAAFABIAAAABAAEAAAAFABMAAAABAAIAAAAGABEAAAACAAAAAAAGABIAAAACAAEAAAAGABMAAAACAAIAAABTAAYAAAAAAAEAAABTAAcAAAAAAAEAAABTAAgAAAAAAAEAAABTAAkAAAAAAAIAAABUAAYAAAABAAEAAABUAAcAAAABAAEAAABUAAgAAAABAAEAAABUAAkAAAABAAIAAABVAAYAAAACAAEAAABVAAcAAAACAAEAAABVAAgAAAACAAEAAABVAAkAAAACAAIAAABTAAUAAAAAAAAAAABUAAUAAAABAAAAAABVAAUAAAACAAAAAAAmAAAAAAAAAAAAAAAmAAEAAAAAAAEAAAAmAAIAAAAAAAEAAAAmAAMAAAAAAAEAAAAmAAQAAAAAAAEAAAAmAAUAAAAAAAIAAAAnAAUAAAABAAIAAAAoAAUAAAABAAIAAAApAAUAAAADAAIAAAAqAAUAAAABAAIAAAArAAUAAAABAAIAAAAsAAUAAAABAAIAAAAtAAUAAAABAAIAAAAuAAUAAAABAAIAAAAvAAUAAAABAAIAAAAvAAQAAAABAAEAAAAvAAMAAAABAAEAAAAvAAIAAAABAAEAAAAvAAEAAAABAAEAAAAuAAIAAAABAAEAAAAtAAIAAAABAAEAAAAsAAIAAAABAAEAAAArAAIAAAABAAEAAAAqAAIAAAABAAEAAAApAAIAAAABAAEAAAAoAAIAAAABAAEAAAAnAAIAAAABAAEAAAAnAAMAAAABAAEAAAAoAAMAAAABAAEAAAAoAAQAAAABAAEAAAAnAAQAAAABAAEAAAApAAQAAAABAAEAAAApAAMAAAABAAEAAAAqAAMAAAABAAEAAAArAAMAAAABAAEAAAArAAQAAAABAAEAAAAqAAQAAAABAAEAAAAsAAQAAAABAAEAAAAtAAQAAAABAAEAAAAuAAQAAAABAAEAAAAuAAMAAAABAAEAAAAtAAMAAAABAAEAAAAsAAMAAAABAAEAAAAnAAAAAAABAAAAAAAoAAAAAAABAAAAAAApAAAAAAABAAAAAAAqAAAAAAABAAAAAAArAAAAAAABAAAAAAAsAAAAAAABAAAAAAAtAAAAAAABAAAAAAAuAAAAAAABAAAAAAAnAAEAAAABAAEAAAAoAAEAAAABAAEAAAApAAEAAAABAAEAAAAqAAEAAAABAAEAAAArAAEAAAABAAEAAAAsAAEAAAABAAEAAAAtAAEAAAABAAEAAAAuAAEAAAABAAEAAAAwAAUAAAABAAIAAAAxAAUAAAABAAIAAAAvAAAAAAABAAAAAAAwAAAAAAABAAAAAAAxAAAAAAABAAAAAAAyAAUAAAACAAIAAAAyAAQAAAACAAEAAAAyAAMAAAACAAEAAAAyAAIAAAACAAEAAAAyAAEAAAACAAEAAAAyAAAAAAACAAAAAAAxAAIAAAABAAEAAAAxAAEAAAABAAEAAAAwAAIAAAABAAEAAAAwAAEAAAABAAEAAAAwAAMAAAABAAEAAAAwAAQAAAABAAEAAAAxAAQAAAABAAEAAAAxAAMAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_57qmd")
+
+[node name="SoilWaterLayer" type="TileMapLayer" parent="Layers" unique_id=1926961995]
+z_index = 1
+tile_set = SubResource("TileSet_d0u6y")
 
 [node name="Objects" type="Node2D" parent="." unique_id=508987453]
 y_sort_enabled = true
@@ -872,3 +890,5 @@ position = Vector2(1307, 259)
 
 [node name="Tree11" parent="Objects" unique_id=894240045 instance=ExtResource("5_fq6ga")]
 position = Vector2(460, 11)
+
+[connection signal="tool_use" from="Objects/Player" to="." method="_on_player_tool_use"]
