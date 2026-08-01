@@ -2,14 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://c4nvxvw1wr0ja" path="res://graphics/tilesets/trees.png" id="1_brfkd"]
 [ext_resource type="Script" uid="uid://dbj1ide58n6hy" path="res://tree.gd" id="1_nnvrw"]
+[ext_resource type="Shader" uid="uid://dv31fhqjnd2ii" path="res://flash.gdshader" id="2_gvmkm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nnvrw"]
+resource_local_to_scene = true
+shader = ExtResource("2_gvmkm")
+shader_parameter/progress = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(21, 22)
 
-[node name="Tree" type="StaticBody2D" unique_id=2030716930]
+[node name="Tree" type="StaticBody2D" unique_id=2030716930 groups=["Trees"]]
 script = ExtResource("1_nnvrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1520398882]
+material = SubResource("ShaderMaterial_nnvrw")
 texture = ExtResource("1_brfkd")
 hframes = 2
 

@@ -831,7 +831,6 @@ tile_map_data = PackedByteArray("AAAaAAEAAAAAAAEAAAAaAAIAAAAAAAIAAAAbAAIAAAABAAI
 tile_set = SubResource("TileSet_57qmd")
 
 [node name="SoilWaterLayer" type="TileMapLayer" parent="Layers" unique_id=1926961995]
-z_index = 1
 tile_set = SubResource("TileSet_d0u6y")
 
 [node name="Objects" type="Node2D" parent="." unique_id=508987453]
