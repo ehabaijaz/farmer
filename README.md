@@ -7,122 +7,24 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-<!-- HEADER -->
-<br />
-<div align="center">
-    <a href="https://github.com/BudzioT/Godot_Super-Wakatime">
-        <img src="https://cloud-bo1ln2br1-hack-club-bot.vercel.app/0godotwaka22.png"  alt="Godot Wakatime"/>
-    </a>
-    <h3 align="center"> Godot Super Wakatime </h3>
-    <p align="center">
-        Tool to measure time spent in loved by many people game engine - Godot
-        <br />
-        Officially approved to use in events created by Hack Club
-        <br />
-        <br />
-        <a href="https://godotengine.org/asset-library/asset/3484">Get from Asset Lib</a>
-        ·
-        <a href="https://youtu.be/rqAc-YdVXyM">View Demo</a>
-        ·
-        <a href="https://github.com/BudzioT/Godot_Super-Wakatime/issues/new">Report Bug / Request Feature</a>
-    </p>
-</div>
+# What is this?
+- This game is a simple prototype for a farmer game that mainly utilizes Tilemap Layers and grid systems. It's important you read the controls for the game present in this readme or itch description otherwise you'd be kinda lost.
 
-<!-- CONTENTS -->
-<details>
-    <summary>Table of Contents</summary>
-    <ol>
-        <li>
-            <a href="#about">About The Project</a>
-            <ul>
-                <li><a href="#built-with">Built Using</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#getting-started">Getting Started</a>
-            <ul>
-                <li><a href="#installation">Installation</a></li>
-            </ul>
-        </li>
-        <li><a href="#usage">Usage</a></li>
-        <li><a href="#license">License</a></li>
-    </ol>
-</details>
+# About
+- Your goal is to use the hoe to dig the soil and plant a crop. There are multiple crops you can choose from but the default corn crop is recommended. Then you have to water those plants once and after you're done watering your plants, go to the next day to see them grow dynamically.
+- You can also use an axe to 'chop' down trees though this doesn't really do much.
+- You can also explore the island surrounded by water.
+- There is a day cycle that lasts for 30 seconds from morning to night. This is just for display in case you haven't watered all the plants in time.
+- NOTE: The movement of this game is a bit finnicky but that's part of the challenge so try to position yourself properly when it comes to watering plants. Digging the soil is easier though.
 
+# CONTROLS 
+- Use WASD for movement
+- Use 'Q' and 'E' key to cycle back between 3 tools: Axe, Hoe and Watering Can
+- Use 'F' key to cycle between different types of plants.
+- Use 'Spacebar' key to do an action. If you're holding an axe, it will play the axe attack and it interacts with trees. If you're holding a watering can, it will play a watering
+animation and interacts with dug up soil. If you're holding a hoe, it will play a dig animation and interacts with the ground.
+- IMPORTANT: To move to the next day and see your plants grow, press the 'Tab' key to go to the next day.
 
-<!-- ABOUT -->
-## About The Project
-<br />
-
-[![Product Screenshot][product-screenshot]](https://waka.hackclub.com)
-
-This tool can successfully measure time spent building your games or apps in Godot.
-<br />
-Here's why:
-* It differentiates between switching a scene and script
-* It counts key presses as coding and mouse clicks as building scene
-* Changing scene structure results in a heartbeat sent
-* It correctly detects OS, machine name, language, editor, files
-* It can detect your cursor line and position
-* Time is split between: Building, Coding, Testing
-* In the future it will also detect testing your projects
-
-It works on both Linux and Windows, it wasn't tested on macOS yet
-<br />
-You can also see your time spent in the editor itself:
-[![Time in editor][time-screenshot]]
-
-<p align="right">(<a href="#readme-top">top</a>)</p>
-
-
-### Built Using
-I used the Ouch! CLI tool for decompression of files <br />
-This project was built using one simple, yet powerful language.<br />
-It required a lot of workarounds, but it was a pleasure to use it
-* [![GDScript][Godot]][Godot-url]
-* [![Ouch!][Ouch-shield]][Ouch-url]
-
-<p align="right">(<a href="#readme-top">top</a>)</p>
-
-<!-- GETTING STARTED -->
-## Getting Started
-How to install and use this software? It's easy!
-
-### Installation
-You can either download it from the [Godot Asset Library](https://godotengine.org/asset-library/asset/3484).
-<br />Or you can manually install it, here's how to do it!
-1. Clone the repository
-    ```sh
-    git clone https://github.com/BudzioT/Godot_Super-Wakatime.git
-    ```
-2. Go into your project
-3. Insert the entire `./addons` folder into your project `res://` directory
-
-<p align="right">(<a href="#readme-top">top</a>)</p>
-
-<!-- USAGE -->
-## Usage
-Don't know how to use this plugin? Here are the steps:
-1. Turn on the plugin in your plugins. In your `Project -> Project Settings -> Plugins -> `Click the `Enable` checkbox near this plugin
-2. If prompted for API key, provide it from Wakatime website
-3. if there is an issue with it, please manually create `~/.wakatime.cfg` file with these contents:
-    ```sh
-    [settings]
-    api_key=xxxx
-    ```
-    Where xxxx is your api key
-<br /><br />
-If you are coming from Hack Club use this:
-    ```sh
-    [settings]
-    api_url = https://hackatime.hackclub.com/api/hackatime/v1
-    api_key=xxxx
-    ```
-4. Wakatime CLI should have been installed automatically along with Ouch! Decompression library
-5. Work on your project! You should see your results on either Wakatime or Hackatime!
-6. You can also see your time at the bottom panel
-
-<p align="right">(<a href="#readme-top">top</a>)</p>
 
 <!-- LICENSE -->
 ## License
