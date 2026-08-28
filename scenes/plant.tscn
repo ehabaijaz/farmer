@@ -6,7 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pppyj"]
 size = Vector2(10, 20)
 
-[node name="Plant" type="Area2D" unique_id=1951742681]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g4v7s"]
+radius = 4.0
+
+[node name="Plant" type="Area2D" unique_id=1951742681 groups=["Plants"]]
 position = Vector2(-1, 0)
 script = ExtResource("1_odjdt")
 
@@ -17,3 +20,12 @@ hframes = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1913596907]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_pppyj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1538250227]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1760442640]
+shape = SubResource("CapsuleShape2D_g4v7s")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

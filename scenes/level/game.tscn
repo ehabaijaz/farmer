@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://byfag0kgqavgo" path="res://graphics/tilesets/soil_water.png" id="6_3ny2s"]
 [ext_resource type="PackedScene" uid="uid://ca2vdgfhkuuea" path="res://scenes/plant.tscn" id="9_ig4jx"]
 
+[sub_resource type="Gradient" id="Gradient_0owmy"]
+colors = PackedColorArray(0.9137255, 0.827451, 0.7607843, 1, 0.24313726, 0.3372549, 0.58431375, 1)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ny2s"]
 texture = ExtResource("1_qrcxb")
 0:0/animation_columns = 4
@@ -813,6 +816,7 @@ sources/0 = SubResource("TileSetAtlasSource_pn0ym")
 
 [node name="Game" type="Node2D" unique_id=215818908]
 script = ExtResource("1_f2w0s")
+daytime_gradient = SubResource("Gradient_0owmy")
 
 [node name="Layers" type="Node2D" parent="." unique_id=1530115408]
 
@@ -892,6 +896,24 @@ position = Vector2(1307, 259)
 position = Vector2(460, 11)
 
 [node name="Plant" parent="." unique_id=1951742681 instance=ExtResource("9_ig4jx")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=706883164]
+layer = 10
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1152077117]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=830358993]
+
+[node name="DayTimer" type="Timer" parent="." unique_id=1047058432]
+wait_time = 30.0
+one_shot = true
+autostart = true
 
 [connection signal="seed_use" from="Objects/Player" to="." method="_on_player_seed_use"]
 [connection signal="tool_use" from="Objects/Player" to="." method="_on_player_tool_use"]

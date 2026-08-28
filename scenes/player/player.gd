@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @onready var move_state_machine : AnimationNodeStateMachinePlayback = $AnimationTree.get('parameters/MoveStateMachine/playback')
 @onready var tool_state_machine : AnimationNodeStateMachinePlayback = $AnimationTree.get('parameters/ToolStateMachine/playback')
-
 var direction : Vector2
 var last_direction : Vector2
 var speed := 300
@@ -12,9 +11,8 @@ enum Tools {HOE, AXE, WATER}
 var current_tool = Tools.AXE
 var tool_direction_offset : int = 12
 var tool_y_offset : int = 4
-enum Seeds {CORN, TOMATO, PUMPKIN}
-var current_seed : Seeds = Seeds.CORN
-signal seed_use(seed, pos)
+var current_seed : Global.Seeds = Global.Seeds.CORN
+signal seed_use(seed: Global.Seeds, pos)
 const tool_connection = {
 	Tools.HOE: 'hoe',
 	Tools.AXE: 'axe',
@@ -26,6 +24,10 @@ func _physics_process(delta: float) -> void:
 		get_input()
 	if direction:
 		last_direction = direction
+		if not $Sounds/WalkSoundTimer.time_left:
+			$Sounds/WalkSoundTimer.start()
+	else:
+		$Sounds/WalkSoundTimer.stop()
 	velocity = direction * speed * int(can_move)
 	move_and_slide()
 	animation()
@@ -43,16 +45,19 @@ func get_input():
 		can_move = false
 		await $AnimationTree.animation_finished
 		tool_use.emit(current_tool, position + last_direction * tool_direction_offset + Vector2(0,tool_y_offset))
-		
+		if current_tool == Tools.HOE:
+			$Sounds/HoeSound.play()
+		else:
+			$Sounds/WaterSound.play()
 	if Input.is_action_just_pressed("tool_forward"):
 		current_tool = (current_tool + 1) % Tools.size() as Tools
 	elif Input.is_action_just_pressed("tool_backward"):
 		current_tool = (current_tool - 1 + Tools.size()) % Tools.size() as Tools
 	if Input.is_action_just_pressed("seed_toggle"):
-		current_seed = posmod(current_seed + 1, Seeds.size()) as Seeds 
+		current_seed = posmod(current_seed + 1, Global.Seeds.size()) as Global.Seeds 
 	if Input.is_action_just_pressed("plant"):
 		can_move = false
-		direction = Vector2.ZERO
+		direction = Vector2.ZERO 
 		seed_use.emit(current_seed,position + last_direction * tool_direction_offset + Vector2(0,tool_y_offset) )
 		await get_tree().create_timer(0.5).timeout
 		can_move = true
@@ -75,3 +80,7 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 
 func axe_use():
 	tool_use.emit(current_tool, position + last_direction * tool_direction_offset + Vector2(0,tool_y_offset))
+	$Sounds/AxeSound.play()
+
+func _on_walk_sound_timer_timeout() -> void:
+	$Sounds/WalkSound.play()

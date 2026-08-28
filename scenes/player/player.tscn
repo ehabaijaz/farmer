@@ -2,6 +2,11 @@
 
 [ext_resource type="Script" uid="uid://di74e05su6s0" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="Texture2D" uid="uid://dpfxibevth7y" path="res://graphics/characters/player_animations.png" id="2_yewv4"]
+[ext_resource type="AudioStream" uid="uid://dtsnwvwr5w013" path="res://audio/axe.wav" id="3_gmlin"]
+[ext_resource type="AudioStream" uid="uid://b1sbhvfoqd0u1" path="res://audio/water.ogg" id="4_0owmy"]
+[ext_resource type="AudioStream" uid="uid://bxbb5os8ycr5w" path="res://audio/hoe.wav" id="5_qek5x"]
+[ext_resource type="AudioStream" uid="uid://dff6xghytlqqh" path="res://audio/step.mp3" id="6_5gtgg"]
+[ext_resource type="AudioStream" uid="uid://7a4rv3t3jhq3" path="res://audio/music.mp3" id="7_h17s1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yewv4"]
 radius = 5.0
@@ -1004,4 +1009,25 @@ parameters/MoveStateMachine/move/blend_position = Vector2(0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1243262127]
 
+[node name="Sounds" type="Node" parent="." unique_id=70092452]
+
+[node name="AxeSound" type="AudioStreamPlayer2D" parent="Sounds" unique_id=660872838]
+stream = ExtResource("3_gmlin")
+
+[node name="WaterSound" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1545734543]
+stream = ExtResource("4_0owmy")
+
+[node name="HoeSound" type="AudioStreamPlayer2D" parent="Sounds" unique_id=744618566]
+stream = ExtResource("5_qek5x")
+
+[node name="WalkSound" type="AudioStreamPlayer2D" parent="Sounds" unique_id=1274408654]
+stream = ExtResource("6_5gtgg")
+
+[node name="WalkSoundTimer" type="Timer" parent="Sounds" unique_id=1370132180]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds" unique_id=1123632497]
+stream = ExtResource("7_h17s1")
+autoplay = true
+
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
+[connection signal="timeout" from="Sounds/WalkSoundTimer" to="." method="_on_walk_sound_timer_timeout"]
