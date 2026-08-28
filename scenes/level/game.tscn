@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dcwcdle3cjkv6" path="res://graphics/tilesets/hills.png" id="4_fq6ga"]
 [ext_resource type="PackedScene" uid="uid://brvvlvtr46gq1" path="res://tree.tscn" id="5_fq6ga"]
 [ext_resource type="Texture2D" uid="uid://byfag0kgqavgo" path="res://graphics/tilesets/soil_water.png" id="6_3ny2s"]
+[ext_resource type="PackedScene" uid="uid://ca2vdgfhkuuea" path="res://scenes/plant.tscn" id="9_ig4jx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ny2s"]
 texture = ExtResource("1_qrcxb")
@@ -890,4 +891,7 @@ position = Vector2(1307, 259)
 [node name="Tree11" parent="Objects" unique_id=894240045 instance=ExtResource("5_fq6ga")]
 position = Vector2(460, 11)
 
+[node name="Plant" parent="." unique_id=1951742681 instance=ExtResource("9_ig4jx")]
+
+[connection signal="seed_use" from="Objects/Player" to="." method="_on_player_seed_use"]
 [connection signal="tool_use" from="Objects/Player" to="." method="_on_player_tool_use"]
