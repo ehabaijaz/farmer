@@ -25,7 +25,7 @@
 animation and interacts with dug up soil. If you're holding a hoe, it will play a dig animation and interacts with the ground.
 - IMPORTANT: To move to the next day and see your plants grow, press the 'Tab' key to go to the next day.
 
-
+Note: AI was used for occasional debugging especially near the end of development when there were issues with the soil systems for example.
 <!-- LICENSE -->
 ## License
 
