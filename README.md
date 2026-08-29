@@ -10,6 +10,12 @@
 # What is this?
 - This game is a simple prototype for a farmer game that mainly utilizes Tilemap Layers and grid systems. It's important you read the controls for the game present in this readme or itch description otherwise you'd be kinda lost.
 
+
+
+https://github.com/user-attachments/assets/b8d73b86-4a00-45b4-b6fa-fbcab099df7e
+
+
+
 # About
 - Your goal is to use the hoe to dig the soil and plant a crop. There are multiple crops you can choose from but the default corn crop is recommended. Then you have to water those plants once and after you're done watering your plants, go to the next day to see them grow dynamically.
 - You can also use an axe to 'chop' down trees though this doesn't really do much.
